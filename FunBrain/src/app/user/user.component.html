@@ -15,6 +15,9 @@
           class="ui positive right floated button">
     Submit link
   </button>
+  <div *ngIf="loading">loading ...</div>
+
+  <button (click)="loadData()" class="ui positive button">Load</button>
 
 </form>
 
