@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
 
       this.loading = true;
       this.userSearchService.getUsers();
+      // console.log('users', users);
 
       // this.http.request('http://localhost:64884/api/users')
       //   .subscribe((res: Response) => {
