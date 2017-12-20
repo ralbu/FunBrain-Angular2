@@ -18,7 +18,10 @@ export class UserComponent implements OnInit {
       console.log('Load data');
 
       this.loading = true;
-      this.userSearchService.getUsers();
+      this.userSearchService.getUsers().subscribe(users => {
+        console.log('user', users);
+        this.users = users;
+      });
       // console.log('users', users);
 
       // this.http.request('http://localhost:64884/api/users')

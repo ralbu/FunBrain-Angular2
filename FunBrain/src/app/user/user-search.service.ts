@@ -15,17 +15,19 @@ export class UserSearchService {
   }
 
   // Add return type
-   getUsers() {
-    return this.http.get(this.apiUrl).subscribe(response => {
-      return (<any>response).map(item => {
-        return new UserSearchResult({
-          id: item.id,
-          name: item.name,
-          email: item.email
-        });
-      });
+   getUsers(): Observable<UserSearchResult[]> {
+     return this.http.get<UserSearchResult[]>(this.apiUrl);
 
-    });
+    // return this.http.get<UserSearchResult>(this.apiUrl).subscribe(response => {
+    //   console.log('response', response);
+      // return (<any>response).map(item => {
+      //   return new UserSearchResult({
+      //     id: item.id,
+      //     name: item.name,
+      //     email: item.email
+      //   });
+      // });
+    // });
 
 
     // return this.http.get(this.apiUrl)

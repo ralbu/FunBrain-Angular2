@@ -16,6 +16,7 @@
     Submit link
   </button>
   <div *ngIf="loading">loading ...</div>
+  <div><pre>{{users | json}}</pre></div>
 
   <button (click)="loadData()" class="ui positive button">Load</button>
 
