@@ -1,6 +1,6 @@
-import {UserSearchService} from "./user-search.service";
-import {Observable} from "rxjs";
-import {UserSearchResult} from "./user-search-result";
+import {UserSearchService} from './user-search.service';
+import {Observable} from 'rxjs';
+
 describe('User Service', () => {
   it('get', () => {
     let mockHttp = jasmine.createSpyObj('mockHttp', ['get']);

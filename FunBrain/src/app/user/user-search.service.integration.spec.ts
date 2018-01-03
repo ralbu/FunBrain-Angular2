@@ -1,9 +1,7 @@
-import {fakeAsync, getTestBed, inject, TestBed} from "@angular/core/testing";
-import {UserSearchService} from "./user-search.service";
-import {MockBackend} from "@angular/http/testing";
-import {BaseRequestOptions, ConnectionBackend} from "@angular/http";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import {getTestBed, inject, TestBed} from '@angular/core/testing';
+import {API_URL, UserSearchService} from './user-search.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {UserSearchResult} from './user-search-result';
 
 describe('User service', () => {
 
@@ -12,67 +10,55 @@ describe('User service', () => {
       imports: [HttpClientTestingModule],
       providers: [
         UserSearchService,
+        {provide: API_URL, useValue: 'api/url'}
       ]
     });
   });
 
-  afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
-    httpMock.verify();
-  }));
+  it('should get users',
+    inject([HttpTestingController, UserSearchService], (httpMock: HttpTestingController, userService: UserSearchService) => {
+
+      const mockUsers = [
+        {id: 1, name: 'user 1'},
+        {id: 2, name: 'user 2'}
+      ];
+
+      userService.getUsers().subscribe((user: UserSearchResult[]) => {
+        console.log('user', JSON.stringify(user));
+        expect(JSON.stringify(user)).toEqual(JSON.stringify(mockUsers));
+      });
+
+      const mockReq = httpMock.expectOne('api/url');
+
+      mockReq.flush(mockUsers);
+      httpMock.verify();
+    }));
+
+  // afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
+  //   httpMock.verify();
+  // }));
 
 
-  /* This works if HttpClient is the only parameter of the constructor
   it('returns users with an id <= 5',
-    inject([HttpClient, HttpTestingController], (http: HttpClient, httpMock: HttpTestingController) => {
-    const mockResponse = [
-      {
-        id: 5,
-        name: 'Test5',
-      },
-      {
-        id: 6,
-        name: 'Test6',
-      }
-    ];
+    inject([HttpTestingController], (httpMock: HttpTestingController) => {
+      const mockResponse = [
+        {id: 5, name: 'Test5'},
+        {id: 6, name: 'Test6'}
+      ];
 
-    const userService = getTestBed().get(UserSearchService);
-    userService.getUsers().subscribe(
-      actualUsers => {
-        expect(actualUsers.length).toBe(2);
-        expect(actualUsers[0].id).toEqual(5);
-      }
-    );
+      const userService = getTestBed().get(UserSearchService);
+      userService.getUsers().subscribe(
+        actualUsers => {
+          expect(actualUsers.length).toBe(2);
+          expect(actualUsers[0].id).toEqual(5);
+        }
+      );
 
-    const req = httpMock.expectOne(userService.apiUrl);
-    expect(req.request.method).toEqual('GET');
+      const req = httpMock.expectOne(userService.apiUrl);
+      expect(req.request.method).toEqual('GET');
 
-    req.flush(mockResponse);
-    httpMock.verify();
-  }));
-
-*/
-
-  /*
-
-  it ('call service',
-    inject([UserSearchService, HttpTestingController, HttpClient], fakeAsync((userService, httpMock: HttpTestingController, httpClient: HttpClient) => {
-
-    const mockResponse = [{id: 1}];
-    const userService2 = getTestBed().get(UserSearchService);
-
-    userService2.getUsers().subscribe( actualUsers => {
-      expect(actualUsers.length).toBe(1);
-    });
-    }))
-
-    // userService.getUsers().subscribe((ev) => {
-    //   expect(ev.body).toEqual('body');
-    // });
-    // mockBackend.connections.subscribe(c => {
-    //   expect(c.request.url).toBe('http://abc');
-    // });
-
-    // expect('true').toEqual('true');
-  ); */
+      req.flush(mockResponse);
+      httpMock.verify();
+    }));
 
 });
