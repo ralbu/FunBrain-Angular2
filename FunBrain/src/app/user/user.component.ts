@@ -12,6 +12,11 @@ export class UserComponent implements OnInit {
     constructor(public http: Http, private userSearchService: UserSearchService) { }
 
     ngOnInit() {
+      this.userSearchService.getUsers().subscribe(users => {
+        // console.log('users', users);
+        console.table(users);
+        this.users = users;
+      })
     }
 
     private loadData(): boolean {

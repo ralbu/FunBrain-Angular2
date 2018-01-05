@@ -16,22 +16,23 @@
     Submit link
   </button>
   <div *ngIf="loading">loading ...</div>
-  <div><pre>{{users | json}}</pre></div>
+  <!--<div><pre>{{users | json}}</pre></div>-->
 
   <button (click)="loadData()" class="ui positive button">Load</button>
-
 
   <table class="ui table celled">
     <thead>
     <th>Name</th>
     <th>Email</th>
     <th></th>
+    <th></th>
     </thead>
     <tbody>
-    <tr>
-      <td>aa</td>
-      <td>bbb</td>
-      <td>ss</td>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
     </tr>
     </tbody>
   </table>
