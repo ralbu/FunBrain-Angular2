@@ -14,13 +14,13 @@ export class UserComponent implements OnInit {
     ngOnInit() {
       this.userSearchService.getUsers().subscribe(users => {
         // console.log('users', users);
-        console.table(users);
+        // console.table(users);
         this.users = users;
       })
     }
 
     private loadData(): boolean {
-      console.log('Load data');
+      // console.log('Load data');
 
       this.loading = true;
       this.userSearchService.getUsers().subscribe(users => {
