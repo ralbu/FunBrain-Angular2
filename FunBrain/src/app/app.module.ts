@@ -10,12 +10,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {appRoutes} from "../../routes";
 import {RouterModule} from "@angular/router";
 import {UserDetailsComponent} from "./users/user-details/user-details.component";
+import {UserEditComponent} from "./users/user-edit.component/user-edit.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserEditComponent
 
     // UserSearchService
   ],
