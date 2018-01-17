@@ -14,6 +14,6 @@ export class UserDetailsComponent implements OnInit {
     let id = this.route.snapshot.params['id'];
     console.log('id', id);
 
-    
+
   }
 }

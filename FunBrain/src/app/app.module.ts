@@ -11,10 +11,13 @@ import {appRoutes} from "../../routes";
 import {RouterModule} from "@angular/router";
 import {UserDetailsComponent} from "./users/user-details/user-details.component";
 import {UserEditComponent} from "./users/user-edit.component/user-edit.component";
+import {UserService} from "./users/user.service";
+import {UserListComponent} from "./users/user-list/user-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    UserListComponent,
     UserComponent,
     UserDetailsComponent,
     UserEditComponent
@@ -27,7 +30,7 @@ import {UserEditComponent} from "./users/user-edit.component/user-edit.component
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [SearchServiceInjectables, UserSearchService],
+  providers: [SearchServiceInjectables, UserSearchService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
