@@ -4,8 +4,9 @@ import {Routes} from "@angular/router";
 import {UserEditComponent} from "./src/app/users/user-edit.component/user-edit.component";
 
 export const appRoutes: Routes = [
-  {path: 'users', component: UserComponent},
-  {path: 'users/:id', component: UserDetailsComponent},
-  {path: 'edit-user', component: UserEditComponent},
-  {path: '', redirectTo: '/users', pathMatch: 'full'}
+  {path: '', component: UserComponent, pathMatch: 'full'},
+  {path: 'users', component: UserComponent, pathMatch: 'full'},
+  {path: 'users/:id', component: UserDetailsComponent, pathMatch: 'full'},
+  {path: 'edit-user', component: UserEditComponent}
+  // {path: '', redirectTo: '/users', pathMatch: 'full'}
 ];
