@@ -14,12 +14,14 @@ import {UserEditComponent} from './users/user-edit.component/user-edit.component
 import {UserService} from './users/user.service';
 import {UserListComponent} from './users/user-list/user-list.component';
 import {UserEditPage} from './users/user-edit.page/user-edit.page';
+import {UserCreatePage} from "./users/user-create.page/user-create.page";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     UserComponent,
+    UserCreatePage,
     UserEditPage,
     UserDetailsComponent,
 
