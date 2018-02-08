@@ -1,7 +1,25 @@
 <div>
   <div><a [routerLink]="'/users'">All users</a></div>
-  <h2>Edit user page</h2>
-  <user-edit></user-edit>
+  <h2>Edit user </h2>
+  <form #userForm="ngForm" class="ui form">
+  <!--<user-edit></user-edit>-->
 
-  <button type="submit" class="ui button primary">Create user</button>
+    <div class="field">
+      <label for="nameInput">Name</label>
+      <input type="text"
+             [(ngModel)]="userName"
+             id="nameInput"
+             placeholder="Name"
+             name="name"
+             required>
+      <label for="emailInput">Email</label>
+      <input type="text"
+             id="emailInput"
+             placeholder="Email"
+             name="email">
+    </div>
+  <button type="submit" class="ui button primary">Save user</button>
+  </form>
+  <pre>{{userForm.value | json}}</pre>
+  <pre>{{userForm.valid}}</pre>
 </div>

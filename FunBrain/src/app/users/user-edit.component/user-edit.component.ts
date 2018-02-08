@@ -5,7 +5,9 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: 'user-edit.component.html'
 })
 export class UserEditComponent implements OnInit {
+  private userName: string;
   constructor(private route:ActivatedRoute) {
+    this.userName = 'user';
   }
 
   ngOnInit() {

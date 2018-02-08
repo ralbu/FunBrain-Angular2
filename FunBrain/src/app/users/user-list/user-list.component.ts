@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserResultModel} from "../user-result.model";
+import {UserModel} from "../user.model";
 import {UserService} from "../user.service";
 
 @Component({
@@ -7,7 +7,7 @@ import {UserService} from "../user.service";
   templateUrl: 'user-list.component.html'
 })
 export class UserListComponent{
-  private users: UserResultModel[];
+  private users: UserModel[];
 
   constructor(private userService: UserService){
   }

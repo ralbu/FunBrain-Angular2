@@ -5,4 +5,11 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: 'user-edit.page.html'
 })
 export class UserEditPage {
+
+  private userName: string;
+  private email: string;
+
+  constructor(){
+    this.userName = 'user name';
   }
+}

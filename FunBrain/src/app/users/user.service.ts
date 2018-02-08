@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
-import {UserResultModel} from "./user-result.model";
+import {UserModel} from "./user.model";
 
 export const API_URL = 'http://localhost:64884/api/users';
 
@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient, @Inject(API_URL) private apiUrl: string) {
   }
 
-  getUsers(): Observable<UserResultModel[]> {
-    return this.http.get<UserResultModel[]>(this.apiUrl);
+  getUsers(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(this.apiUrl);
   }
 }
